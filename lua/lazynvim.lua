@@ -16,4 +16,5 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 
 -- color scheme
-vim.cmd.colorscheme("base16-tender")
+-- vim.cmd.colorscheme("base16-tender")
+vim.cmd.colorscheme("tokyonight")

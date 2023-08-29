@@ -1,6 +1,6 @@
 -- IMPORTANT: make sure to setup neodev BEFORE lspconfig
 require("neodev").setup({
-  -- add any options here, or leave empty to use the default settings
+    -- add any options here, or leave empty to use the default settings
 })
 
 local status_ok, lspconfig = pcall(require, "lspconfig")
@@ -47,14 +47,44 @@ lspconfig.lua_ls.setup({
 
 lspconfig.clangd.setup {
     capabilities = capabilities,
-    settings = {
-        Cpp = {
-            completion = {
-                callSnippet = "Replace",
-            },
-        },
-    },
+    function()
+        require("plugins.configs.clangd")
+    end,
+    -- settings = {
+    --     Cpp = {
+    --         completion = {
+    --             callSnippet = "Replace",
+    --         },
+    --     },
+    -- },
 }
+
+lspconfig.tsserver.setup {
+    capabilities = capabilities,
+    filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
+    cmd = { "typescript-language-server", "--stdio" },
+    root_dir = function() return vim.loop.cwd() end
+}
+
+local tw_highlight = require('tailwind-highlight')
+lspconfig.tailwindcss.setup {
+    on_attach = function(client, bufnr)
+        tw_highlight.setup(client, bufnr, {
+            single_column = false,
+            mode = 'background',
+            debounce = 200,
+        })
+    end
+}
+
+lspconfig.mdx_analyzer.setup {
+    capabilities = capabilities,
+    filetypes = { "mdx" },
+}
+
+lspconfig.jsonls.setup {}
+
+lspconfig.ltex.setup {}
 
 
 -- Global mappings.
