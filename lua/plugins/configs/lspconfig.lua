@@ -59,32 +59,32 @@ lspconfig.clangd.setup {
     -- },
 }
 
-lspconfig.tsserver.setup {
-    capabilities = capabilities,
-    filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
-    cmd = { "typescript-language-server", "--stdio" },
-    root_dir = function() return vim.loop.cwd() end
-}
-
-local tw_highlight = require('tailwind-highlight')
-lspconfig.tailwindcss.setup {
-    on_attach = function(client, bufnr)
-        tw_highlight.setup(client, bufnr, {
-            single_column = false,
-            mode = 'background',
-            debounce = 200,
-        })
-    end
-}
-
-lspconfig.mdx_analyzer.setup {
-    capabilities = capabilities,
-    filetypes = { "mdx" },
-}
-
-lspconfig.jsonls.setup {}
-
-lspconfig.ltex.setup {}
+-- lspconfig.tsserver.setup {
+--     capabilities = capabilities,
+--     filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
+--     cmd = { "typescript-language-server", "--stdio" },
+--     root_dir = function() return vim.loop.cwd() end
+-- }
+--
+-- local tw_highlight = require('tailwind-highlight')
+-- lspconfig.tailwindcss.setup {
+--     on_attach = function(client, bufnr)
+--         tw_highlight.setup(client, bufnr, {
+--             single_column = false,
+--             mode = 'background',
+--             debounce = 200,
+--         })
+--     end
+-- }
+--
+-- lspconfig.mdx_analyzer.setup {
+--     capabilities = capabilities,
+--     filetypes = { "mdx" },
+-- }
+--
+-- lspconfig.jsonls.setup {}
+--
+-- lspconfig.ltex.setup {}
 
 
 -- Global mappings.
