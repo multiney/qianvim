@@ -62,8 +62,8 @@ return {
                 },
             })
             -- configure the nvim-treesitter plugin to use the markdown parser for mdx filetypes
-            local ft_to_parser = require("nvim-treesitter.parsers").filetype_to_parsername
-            ft_to_parser.mdx = "markdown"
+            -- local ft_to_parser = require("nvim-treesitter.parsers").filetype_to_parsername
+            -- ft_to_parser.mdx = "markdown"
             -- vim.treesitter.language.register('mdx-analyzer', 'mdx')
         end,
     },

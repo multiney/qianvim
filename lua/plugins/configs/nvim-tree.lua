@@ -11,13 +11,18 @@ end
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup {
+  sort_by = "case_sensitive",
+  filters = {
+    dotfiles = true,
+  },
   update_focused_file = {
     enable = true,
     update_cwd = true,
   },
   renderer = {
+    group_empty = true,
     root_folder_modifier = ":t",
- -- These icons are visible when you install web-devicons
+    -- These icons are visible when you install web-devicons
     icons = {
       glyphs = {
         default = "",
@@ -60,8 +65,8 @@ nvim_tree.setup {
     mappings = {
       list = {
         { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
-        { key = "h", cb = tree_cb "close_node" },
-        { key = "v", cb = tree_cb "vsplit" },
+        { key = "h",                  cb = tree_cb "close_node" },
+        { key = "v",                  cb = tree_cb "vsplit" },
       },
     },
   },
